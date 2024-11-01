@@ -1,6 +1,6 @@
 # User Management System Node App
 
-# this app an do the following:
+# this app can do the following:
 
 - display all users in the system
 - add user to the system
