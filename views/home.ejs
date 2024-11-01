@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>User Management System</title>
+  </head>
+  <style>
+    table {
+      font-family: Arial, Helvetica, sans-serif;
+      border-collapse: collapse;
+      width: 100%;
+    }
+
+    td,
+    th {
+      border: 1px solid #dddddd;
+      text-align: left;
+      padding: 8px;
+    }
+
+    tr:nth-child(even) {
+      background-color: #dddddd;
+    }
+  </style>
+  <body>
+    <h2 style="text-align: center">User Management System</h2>
+    <table>
+      <tr>
+        <th>User Id</th>
+        <th>User Name</th>
+        <th>User Email</th>
+        <th>Age</th>
+        <th>Delete</th>
+      </tr>
+      <% data.forEach(user=>{ %>
+      <tr>
+        <td><%= user.userUniqueId %></td>
+        <td><%= user.userName %></td>
+        <td><%= user.userEmail %></td>
+        <td><%= user.userAge %></td>
+        <td>
+          <form action="/delete" method="post">
+            <input
+              type="text"
+              style="display: none"
+              name="userUniqueId"
+              value="<%= user.userUniqueId %>"
+            />
+            <button type="submit">Delete</button>
+          </form>
+        </td>
+      </tr>
+      <% }) %>
+    </table>
+
+    <h2>Add User</h2>
+    <form action="/" method="post">
+      <input
+        type="text"
+        placeholder="User Unique Id"
+        name="userUniqueId"
+        required
+      />
+      <input type="text" placeholder="User Name" name="userName" required />
+      <input type="text" placeholder="User Email" name="userEmail" required />
+      <input type="text" placeholder="User age" name="userAge" required />
+      <button type="submit">Submit</button>
+    </form>
+
+    <h2>Update User</h2>
+    <form action="/update" method="post">
+      <input
+        type="text"
+        placeholder="User Unique Id"
+        name="userUniqueId"
+        required
+      />
+      <input type="text" placeholder="User Name" name="userName" required />
+      <input type="text" placeholder="User Email" name="userEmail" required />
+      <input type="text" placeholder="User age" name="userAge" required />
+      <button type="submit">Update</button>
+    </form>
+  </body>
+</html>
